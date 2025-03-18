@@ -12,6 +12,8 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 . $BIN_DIR/build_common.sh
 
 ## XXXXX Check Language version
+cp src/pages/utils/config.py.tmpl src/pages/utils/config.py
+file_replace_variables src/pages/utils/config.py
 
 if is_deploy_compute; then
   mkdir -p ../../target/compute/$APP_DIR
@@ -24,4 +26,3 @@ else
   exit_on_error
 fi  
 
-file_replace_variables src/pages/utils/config.py
