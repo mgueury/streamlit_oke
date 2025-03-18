@@ -4,11 +4,11 @@
 DB_TYPE = "qdrant"  # Options: "oracle", "qdrant"
 
 # OracleDB Configuration
-ORACLE_DB_USER = "ansh"  #Enter your oracle vector Db username
-ORACLE_DB_PWD = "Gena#######"  #Enter your oracle vector Db password
-ORACLE_DB_HOST_IP = "######"  #Enter your oracle vector Db host ip
+ORACLE_DB_USER = "##TF_VAR_db_user##"  #Enter your oracle vector Db username
+ORACLE_DB_PWD = "##TF_VAR_db_password##"  #Enter your oracle vector Db password
+ORACLE_DB_HOST_IP = "XXXXX"  #Enter your oracle vector Db host ip
 ORACLE_DB_PORT = 1521   #Enter your oracle vector Db host port
-ORACLE_DB_SERVICE = "orclpdb01.sub05101349370.bpivcnllm.oraclevcn.com" 
+ORACLE_DB_SERVICE = "##DB_URL##" 
 
 ORACLE_USERNAME = ORACLE_DB_USER
 ORACLE_PASSWORD = ORACLE_DB_PWD
