@@ -54,7 +54,8 @@ llm = ChatOCIGenAI(
     model_id= generateModel,
     service_endpoint= endpoint,
     compartment_id=compartment_id,
-    model_kwargs={"temperature": 0.0, "max_tokens": 500}
+    model_kwargs={"temperature": 0.0, "max_tokens": 500},
+    auth_type="INSTANCE_PRINCIPAL",
 )
 
 chain = ConversationChain(llm=llm, memory=ConversationSummaryMemory(llm=llm, max_token_limit=500), verbose=False)

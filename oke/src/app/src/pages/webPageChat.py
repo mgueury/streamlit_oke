@@ -189,7 +189,8 @@ def main():
         model_id=config.GENERATE_MODEL,
         service_endpoint=config.ENDPOINT,
         compartment_id=compartment_id,
-        model_kwargs={"temperature": 0, "max_tokens": 400}
+        model_kwargs={"temperature": 0, "max_tokens": 400},
+        auth_type="INSTANCE_PRINCIPAL",        
     )
 
     # Load question answering chain

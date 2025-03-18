@@ -158,7 +158,8 @@ def main():
     model_id=llm_name,
     service_endpoint=config.ENDPOINT,
     compartment_id=config.COMPARTMENT_ID,
-    model_kwargs={"temperature": temperature, "max_tokens": max_token}
+    model_kwargs={"temperature": temperature, "max_tokens": max_token},
+    auth_type="INSTANCE_PRINCIPAL",        
 )
 
                 if st.button("Summarize"):
