@@ -20,5 +20,5 @@ openpyxl
 youtube-transcript-api
 pdfminer.six
 transformers
-qdrant-client
-PyPDF2   
+qdrant-client 
+pypdf
