@@ -21,10 +21,10 @@ QDRANT_COLLECTION_NAME = "my_documents" #name of table where you want to store t
 QDRANT_DISTANCE_FUNC = "Dot"
 
 # Common Configuration
-COMPARTMENT_ID = "ocid1.compartment.oc1..##################"
-OBJECT_STORAGE_LINK = "https://objectstorage.eu-frankfurt-1.oraclecloud.com/n/##############/b/##########/o/"
+COMPARTMENT_ID = "##TF_VAR_compartment_ocid##"
+OBJECT_STORAGE_LINK = "https://objectstorage.##TF_VAR_region##.oraclecloud.com/n/xxxxx/b/xxxxxx/o/"
 DIRECTORY = 'data'  # directory to store the pdf's from where the RAG model should take the documents from
 PROMPT_CONTEXT = "You are an AI Assistant trained to give answers based only on the information provided. Given only the above text provided and not prior knowledge, answer the query. If someone asks you a question and you don't know the answer, don't try to make up a response, simply say: I don't know."
-ENDPOINT= "https://inference.generativeai.eu-frankfurt-1.oci.oraclecloud.com" #change in case you want to select a diff region
+ENDPOINT= "https://inference.generativeai.##TF_VAR_region##.oci.oraclecloud.com" #change in case you want to select a diff region
 EMBEDDING_MODEL = "cohere.embed-multilingual-v3.0"
-GENERATE_MODEL = "cohere.command-r-plus"  # cohere.command-r-16k or cohere.command-r-plus
+GENERATE_MODEL = "cohere.command-r-plus-08-2024"  # cohere.command-r-16k or cohere.command-r-plus
