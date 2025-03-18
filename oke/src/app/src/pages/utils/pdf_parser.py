@@ -114,7 +114,7 @@ class PDFParser:
 
     def parse_pdf(self, pdf_path):
         pdfFileObj = open(pdf_path, 'rb')
-        pdfReader = PyPDF2.PdfReader(pdfFileObj)
+        pdfReader = pypdf.PdfReader(pdfFileObj)
         text_per_page = {}
         image_flag = False
 
