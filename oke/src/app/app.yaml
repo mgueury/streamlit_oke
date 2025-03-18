@@ -20,7 +20,9 @@ spec:
         ports:
         - containerPort: 8080
           name: app-port
-        env:        
+        env:       
+        - name: OCI_CLI_AUTH
+          value: "instance_principal"
         - name: DB_URL
           valueFrom:
             secretKeyRef:

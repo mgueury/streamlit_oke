@@ -6,6 +6,8 @@ WORKDIR /app
 ENV PATH="/app/.local/bin:${PATH}"
 COPY src/ /app/
 RUN pip3 install -r requirements.txt
+RUN mkdir $HOME/.oci
+RUN touch $HOME/.oci/config
 
 ENTRYPOINT ["streamlit", "run", "streamlit.py", "--server.port", "8080"]
 
