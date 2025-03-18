@@ -23,3 +23,5 @@ else
   docker build -t ${TF_VAR_prefix}-app:latest .
   exit_on_error
 fi  
+
+file_replace_variables src/pages/utils/config.py
