@@ -107,7 +107,7 @@ def main():
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
     st.title("Document Summarization App")
     
-    llm_name = st.sidebar.selectbox("LLM",["cohere.command-r-plus-08-2024","cohere.command-r-plus","meta.llama-3-70b-instruct"])
+    llm_name = st.sidebar.selectbox("LLM",["cohere.command-r-plus-08-2024","meta.llama-3-70b-instruct"])
     
     chain_type = st.sidebar.selectbox("Chain Type", ["map_reduce", "stuff", "refine"])
     chunk_size = st.sidebar.slider("Chunk Size", min_value=20, max_value = 5000,
