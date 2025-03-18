@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: streamlit-ui
+  labels:
+    app: streamlit-ui
+spec:
+  containers:
+  - name: streamlit-ui
+    image: ##DOCKER_PREFIX##/streamlit-ui:latest
+    ports:
+      - containerPort: 80
+        name: http-port
+  imagePullSecrets:
+  - name: ocirsecret        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: streamlit-ui-service
+spec:
+  selector:
+    app: streamlit-ui
+  ports:
+  - name: http-service-port
+    protocol: TCP
+    port: 80
+    targetPort: http-port
+---    
