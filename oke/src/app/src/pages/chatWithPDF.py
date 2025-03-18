@@ -45,7 +45,8 @@ def get_vector_store(text_chunks):
     embeddings = OCIGenAIEmbeddings(
         model_id=embeddingModel,
         service_endpoint=endpoint,
-        compartment_id=compartment_id
+        compartment_id=compartment_id,
+        auth_type="INSTANCE_PRINCIPAL"
     )
 
     documents = [Document(page_content=chunk) for chunk in text_chunks]

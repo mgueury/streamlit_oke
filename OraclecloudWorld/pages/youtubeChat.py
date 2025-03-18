@@ -64,7 +64,8 @@ def fetching_transcript(youtubeid, chunk_size, chunk_overlap):
     embeddings = OCIGenAIEmbeddings(
         model_id=embeddingModel,
         service_endpoint=endpoint,
-        compartment_id=compartment_id
+        compartment_id=compartment_id,
+        auth_type="INSTANCE_PRINCIPAL"
     )
 
     if config.DB_TYPE == "oracle":

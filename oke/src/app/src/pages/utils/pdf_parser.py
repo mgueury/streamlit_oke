@@ -196,6 +196,7 @@ class PDFParser:
             model_id="cohere.embed-multilingual-v3.0",
             service_endpoint="https://inference.generativeai.us-chicago-1.oci.oraclecloud.com",
             compartment_id=self.compartment_id,
+            auth_type="INSTANCE_PRINCIPAL"
         )
         url = "http://138.2.160.167:6333"
         db = Qdrant.from_documents(

@@ -44,7 +44,8 @@ def create_qa_retrievals(pdf_file_list: list):
         embeddings = OCIGenAIEmbeddings(
             model_id=config.EMBEDDING_MODEL,
             service_endpoint=config.ENDPOINT,
-            compartment_id=config.COMPARTMENT_ID
+            compartment_id=config.COMPARTMENT_ID,
+            auth_type="INSTANCE_PRINCIPAL"
         )
         print("Ansh 2")
 

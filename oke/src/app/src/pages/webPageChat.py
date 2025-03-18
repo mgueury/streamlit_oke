@@ -45,7 +45,8 @@ def fetching_article(wikipediatopic, chunk_size, chunk_overlap):
     embeddings = OCIGenAIEmbeddings(
         model_id=config.EMBEDDING_MODEL,
         service_endpoint=config.ENDPOINT,
-        compartment_id=compartment_id
+        compartment_id=compartment_id,
+        auth_type="INSTANCE_PRINCIPAL"
     )
 
     # Fetch article from Wikipedia
@@ -95,7 +96,8 @@ def fetching_url(userinputquery, chunk_size, chunk_overlap):
     embeddings = OCIGenAIEmbeddings(
         model_id=config.EMBEDDING_MODEL,
         service_endpoint=config.ENDPOINT,
-        compartment_id=compartment_id
+        compartment_id=compartment_id,
+        auth_type="INSTANCE_PRINCIPAL"
     )
 
     # Fetch page content from URL
