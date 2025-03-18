@@ -1,4 +1,4 @@
-import PyPDF2
+import pypdf
 from pdfminer.high_level import extract_pages
 from pdfminer.layout import LTTextContainer, LTChar, LTFigure
 import pdfplumber
@@ -96,7 +96,7 @@ class PDFParser:
         [image_left, image_top, image_right, image_bottom] = [element.x0, element.y0, element.x1, element.y1]
         pageObj.mediabox.lower_left = (image_left, image_bottom)
         pageObj.mediabox.upper_right = (image_right, image_top)
-        cropped_pdf_writer = PyPDF2.PdfWriter()
+        cropped_pdf_writer = pypdf.PdfWriter()
         cropped_pdf_writer.add_page(pageObj)
         with open('cropped_image.pdf', 'wb') as cropped_pdf_file:
             cropped_pdf_writer.write(cropped_pdf_file)
