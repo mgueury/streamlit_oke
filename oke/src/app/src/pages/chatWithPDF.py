@@ -83,7 +83,7 @@ def get_conversation_chain(vector_store):
         service_endpoint=endpoint,
         compartment_id=compartment_id,
         model_kwargs={"temperature": 0, "max_tokens": 400},
-        auth_type="INSTANCE_PRINCIPAL",        
+        auth_type="INSTANCE_PRINCIPAL",
     )
 
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
