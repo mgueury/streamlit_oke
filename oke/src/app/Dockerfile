@@ -7,5 +7,5 @@ ENV PATH="/app/.local/bin:${PATH}"
 COPY src/* /app/
 RUN pip3 install -r requirements.txt
 
-ENTRYPOINT ["python3","app.py"]
+ENTRYPOINT ["streamlit","run", "streamlit.py", "--server.port", "8080"]
 

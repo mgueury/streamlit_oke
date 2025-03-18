@@ -55,4 +55,3 @@ spec:
     protocol: TCP
     port: 80
     targetPort: app-port
----
