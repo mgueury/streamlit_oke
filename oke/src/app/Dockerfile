@@ -9,6 +9,6 @@ RUN pip3 install -r requirements.txt
 RUN mkdir $HOME/.oci
 RUN touch $HOME/.oci/config
 
-ENTRYPOINT ["streamlit", "run", "streamlit.py", "--server.port", "8080"]
+ENTRYPOINT ["streamlit", "run", "MpGPT.py", "--server.port", "8080"]
 
 
