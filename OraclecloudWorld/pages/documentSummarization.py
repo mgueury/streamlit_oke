@@ -107,7 +107,7 @@ def main():
     st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
     st.title("Document Summarization App")
     
-    llm_name = st.sidebar.selectbox("LLM",["cohere.command-r-plus-08-2024","meta.llama-3-70b-instruct"])
+    llm_name = st.sidebar.selectbox("LLM",["cohere.command-r-16k","cohere.command-r-plus","meta.llama-3-70b-instruct"])
     
     chain_type = st.sidebar.selectbox("Chain Type", ["map_reduce", "stuff", "refine"])
     chunk_size = st.sidebar.slider("Chunk Size", min_value=20, max_value = 5000,
@@ -158,8 +158,7 @@ def main():
     model_id=llm_name,
     service_endpoint=config.ENDPOINT,
     compartment_id=config.COMPARTMENT_ID,
-    model_kwargs={"temperature": temperature, "max_tokens": max_token},
-    auth_type="INSTANCE_PRINCIPAL",        
+    model_kwargs={"temperature": temperature, "max_tokens": max_token}
 )
 
                 if st.button("Summarize"):

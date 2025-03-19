@@ -45,8 +45,7 @@ def fetching_article(wikipediatopic, chunk_size, chunk_overlap):
     embeddings = OCIGenAIEmbeddings(
         model_id=config.EMBEDDING_MODEL,
         service_endpoint=config.ENDPOINT,
-        compartment_id=compartment_id,
-        auth_type="INSTANCE_PRINCIPAL"
+        compartment_id=compartment_id
     )
 
     # Fetch article from Wikipedia
@@ -96,8 +95,7 @@ def fetching_url(userinputquery, chunk_size, chunk_overlap):
     embeddings = OCIGenAIEmbeddings(
         model_id=config.EMBEDDING_MODEL,
         service_endpoint=config.ENDPOINT,
-        compartment_id=compartment_id,
-        auth_type="INSTANCE_PRINCIPAL"
+        compartment_id=compartment_id
     )
 
     # Fetch page content from URL
@@ -191,8 +189,7 @@ def main():
         model_id=config.GENERATE_MODEL,
         service_endpoint=config.ENDPOINT,
         compartment_id=compartment_id,
-        model_kwargs={"temperature": 0, "max_tokens": 400},
-        auth_type="INSTANCE_PRINCIPAL",        
+        model_kwargs={"temperature": 0, "max_tokens": 400}
     )
 
     # Load question answering chain

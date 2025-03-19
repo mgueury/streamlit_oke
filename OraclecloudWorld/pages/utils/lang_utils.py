@@ -44,8 +44,7 @@ def create_qa_retrievals(pdf_file_list: list):
         embeddings = OCIGenAIEmbeddings(
             model_id=config.EMBEDDING_MODEL,
             service_endpoint=config.ENDPOINT,
-            compartment_id=config.COMPARTMENT_ID,
-            auth_type="INSTANCE_PRINCIPAL"
+            compartment_id=config.COMPARTMENT_ID
         )
         print("Ansh 2")
 
@@ -84,8 +83,7 @@ def create_qa_retrievals(pdf_file_list: list):
             model_id=config.GENERATE_MODEL,
             service_endpoint=config.ENDPOINT,
             compartment_id=config.COMPARTMENT_ID,
-            model_kwargs={"temperature": 0, "max_tokens": 400},
-            auth_type="INSTANCE_PRINCIPAL",        
+            model_kwargs={"temperature": 0, "max_tokens": 400}
         )
 
         qa_tmp = RetrievalQA.from_chain_type(

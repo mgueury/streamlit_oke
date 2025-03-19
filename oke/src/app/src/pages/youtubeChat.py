@@ -66,7 +66,6 @@ def fetching_transcript(youtubeid, chunk_size, chunk_overlap):
         service_endpoint=endpoint,
         compartment_id=compartment_id,
         auth_type="INSTANCE_PRINCIPAL"
-
     )
 
     if config.DB_TYPE == "oracle":

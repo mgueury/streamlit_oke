@@ -12,6 +12,9 @@ from langchain.chains import ConversationalRetrievalChain
 from pages.utils.htmlTemplates import bot_template, user_template, css
 from langchain_community.chat_models.oci_generative_ai import ChatOCIGenAI
 from langchain.docstore.document import Document
+from langchain.chains import create_history_aware_retriever
+from langchain import hub
+
 # from pages.utils.style import set_page_config
 # set_page_config()
 # Configuration settings
@@ -46,7 +49,7 @@ def get_vector_store(text_chunks):
         model_id=embeddingModel,
         service_endpoint=endpoint,
         compartment_id=compartment_id,
-        auth_type="INSTANCE_PRINCIPAL"
+        auth_type="INSTANCE_PRINCIPAL"        
     )
 
     documents = [Document(page_content=chunk) for chunk in text_chunks]
@@ -84,22 +87,25 @@ def get_conversation_chain(vector_store):
         service_endpoint=endpoint,
         compartment_id=compartment_id,
         model_kwargs={"temperature": 0, "max_tokens": 400},
-        auth_type="INSTANCE_PRINCIPAL",
+        auth_type="INSTANCE_PRINCIPAL"        
     )
 
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
 
-    conversation_chain = ConversationalRetrievalChain.from_llm(
-        llm=llm,
-        retriever=vector_store.as_retriever(),
-        memory=memory
+    rephrase_prompt = hub.pull("langchain-ai/chat-langchain-rephrase")
+    chat_retriever_chain = create_history_aware_retriever(
+      llm, vector_store.as_retriever(), rephrase_prompt
     )
-
-    return conversation_chain
+    # conversation_chain = ConversationalRetrievalChain.from_llm(
+    #    llm=llm,
+    #    retriever=vector_store.as_retriever(),
+    #    memory=memory
+    # )
+    return chat_retriever_chain
 
 # Function to handle user input and display the chat history
 def handle_user_input(question):
-    response = st.session_state.conversation({'question': question})
+    response = st.session_state.conversation.invoke({'question': question})
     st.session_state.chat_history = response['chat_history']
 
     for i, message in enumerate(st.session_state.chat_history):

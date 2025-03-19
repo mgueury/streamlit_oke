@@ -64,8 +64,7 @@ def fetching_transcript(youtubeid, chunk_size, chunk_overlap):
     embeddings = OCIGenAIEmbeddings(
         model_id=embeddingModel,
         service_endpoint=endpoint,
-        compartment_id=compartment_id,
-        auth_type="INSTANCE_PRINCIPAL"
+        compartment_id=compartment_id
     )
 
     if config.DB_TYPE == "oracle":
@@ -149,8 +148,7 @@ def main():
         model_id=generateModel,
         service_endpoint=endpoint,
         compartment_id=compartment_id,
-        model_kwargs={"temperature": 0, "max_tokens": 400},
-        auth_type="INSTANCE_PRINCIPAL",        
+        model_kwargs={"temperature": 0, "max_tokens": 400}
     )
 
     chain = load_qa_chain(llm, chain_type="stuff")

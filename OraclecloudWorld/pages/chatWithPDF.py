@@ -1,5 +1,5 @@
 import streamlit as st
-from pypdf import PdfReader
+from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.embeddings import OCIGenAIEmbeddings
 from langchain.vectorstores import Qdrant
@@ -45,8 +45,7 @@ def get_vector_store(text_chunks):
     embeddings = OCIGenAIEmbeddings(
         model_id=embeddingModel,
         service_endpoint=endpoint,
-        compartment_id=compartment_id,
-        auth_type="INSTANCE_PRINCIPAL"
+        compartment_id=compartment_id
     )
 
     documents = [Document(page_content=chunk) for chunk in text_chunks]
@@ -83,8 +82,7 @@ def get_conversation_chain(vector_store):
         model_id=generateModel,
         service_endpoint=endpoint,
         compartment_id=compartment_id,
-        model_kwargs={"temperature": 0, "max_tokens": 400},
-        auth_type="INSTANCE_PRINCIPAL",        
+        model_kwargs={"temperature": 0, "max_tokens": 400}
     )
 
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
