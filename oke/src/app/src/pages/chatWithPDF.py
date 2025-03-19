@@ -12,9 +12,6 @@ from langchain.chains import ConversationalRetrievalChain
 from pages.utils.htmlTemplates import bot_template, user_template, css
 from langchain_community.chat_models.oci_generative_ai import ChatOCIGenAI
 from langchain.docstore.document import Document
-from langchain.chains import create_history_aware_retriever
-from langchain import hub
-
 # from pages.utils.style import set_page_config
 # set_page_config()
 # Configuration settings
@@ -92,20 +89,18 @@ def get_conversation_chain(vector_store):
 
     memory = ConversationBufferMemory(memory_key='chat_history', return_messages=True)
 
-    rephrase_prompt = hub.pull("langchain-ai/chat-langchain-rephrase")
-    chat_retriever_chain = create_history_aware_retriever(
-      llm, vector_store.as_retriever(), rephrase_prompt
+    conversation_chain = ConversationalRetrievalChain.from_llm(
+        llm=llm,
+        retriever=vector_store.as_retriever(),
+        memory=memory
     )
-    # conversation_chain = ConversationalRetrievalChain.from_llm(
-    #    llm=llm,
-    #    retriever=vector_store.as_retriever(),
-    #    memory=memory
-    # )
-    return chat_retriever_chain
+
+    return conversation_chain
 
 # Function to handle user input and display the chat history
 def handle_user_input(question):
-    response = st.session_state.conversation.invoke({'question': question})
+    print( str(st.session_state )
+    response = st.session_state.conversation({'question': question})
     st.session_state.chat_history = response['chat_history']
 
     for i, message in enumerate(st.session_state.chat_history):
