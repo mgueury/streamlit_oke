@@ -99,7 +99,6 @@ def get_conversation_chain(vector_store):
 
 # Function to handle user input and display the chat history
 def handle_user_input(question):
-    print( str(st.session_state )
     response = st.session_state.conversation({'question': question})
     st.session_state.chat_history = response['chat_history']
 
