@@ -1,5 +1,5 @@
 # import oci
-import oke.src.app.src.MpGPT as st
+import streamlit as st
 import langchain
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationSummaryMemory
