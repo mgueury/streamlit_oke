@@ -45,12 +45,12 @@ st.markdown(
             background-position: 20px 20px;
         }
         [data-testid="stSidebarNav"]::before {
-            content: "MpGPT";
+            content: "My Company";
             margin-left: 20px;
-            margin-top: 20px;
+            margin-bottom: 20px;
             font-size: 30px;
             position: relative;
-            top: 100px;
+            top: 30px;
         }
     </style>
     """,
