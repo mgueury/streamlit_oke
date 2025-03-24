@@ -1,5 +1,5 @@
 # import oci
-import streamlit as st
+import oke.src.app.src.MpGPT as st
 import langchain
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationSummaryMemory
@@ -35,6 +35,27 @@ def timeit(func):
 #-------------------------------------------------------------------
 # Main page setup
 # st.set_page_config(page_title="Oracle Gen AI Chat", layout="wide")
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebarNav"] {
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg);
+            background-repeat: no-repeat;
+            padding-top: 120px;
+            background-position: 20px 20px;
+        }
+        [data-testid="stSidebarNav"]::before {
+            content: "MpGPT";
+            margin-left: 20px;
+            margin-top: 20px;
+            font-size: 30px;
+            position: relative;
+            top: 100px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 st.header("How can I help you today? ")
 st.info('Select a page on the side menu or use the chat below.', icon="📄")
 with st.sidebar.success("Choose a page above"):
@@ -54,7 +75,7 @@ llm = ChatOCIGenAI(
     model_id= generateModel,
     service_endpoint= endpoint,
     compartment_id=compartment_id,
-    model_kwargs={"temperature": 0.0, "max_tokens": 500},
+    model_kwargs={"temperature": 0.0, "max_tokens": 4000},
     auth_type="INSTANCE_PRINCIPAL",
 )
 
