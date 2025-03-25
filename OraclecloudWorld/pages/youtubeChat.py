@@ -148,7 +148,8 @@ def main():
         model_id=generateModel,
         service_endpoint=endpoint,
         compartment_id=compartment_id,
-        model_kwargs={"temperature": 0, "max_tokens": 400}
+        model_kwargs={"temperature": 0, "max_tokens": 400},
+        provider="cohere"                
     )
 
     chain = load_qa_chain(llm, chain_type="stuff")

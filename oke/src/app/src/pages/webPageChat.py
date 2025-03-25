@@ -192,7 +192,8 @@ def main():
         service_endpoint=config.ENDPOINT,
         compartment_id=compartment_id,
         model_kwargs={"temperature": 0, "max_tokens": 400},
-        auth_type="INSTANCE_PRINCIPAL",        
+        auth_type="INSTANCE_PRINCIPAL",     
+        provider="cohere"                
     )
 
     # Load question answering chain

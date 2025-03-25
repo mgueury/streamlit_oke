@@ -155,12 +155,13 @@ def main():
 #     model_kwargs={"temperature": temperature, "max_tokens": max_token}
 # )
                 llm = ChatOCIGenAI(
-    model_id=llm_name,
-    service_endpoint=config.ENDPOINT,
-    compartment_id=config.COMPARTMENT_ID,
-    model_kwargs={"temperature": temperature, "max_tokens": max_token},
-    auth_type="INSTANCE_PRINCIPAL",        
-)
+                        model_id=llm_name,
+                        service_endpoint=config.ENDPOINT,
+                        compartment_id=config.COMPARTMENT_ID,
+                        model_kwargs={"temperature": temperature, "max_tokens": max_token},
+                        auth_type="INSTANCE_PRINCIPAL",  
+                        provider="cohere"                
+                )
 
                 if st.button("Summarize"):
                     with st.spinner('Summarizing....'):

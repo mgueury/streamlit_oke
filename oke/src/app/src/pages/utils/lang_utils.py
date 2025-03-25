@@ -85,7 +85,8 @@ def create_qa_retrievals(pdf_file_list: list):
             service_endpoint=config.ENDPOINT,
             compartment_id=config.COMPARTMENT_ID,
             model_kwargs={"temperature": 0, "max_tokens": 400},
-            auth_type="INSTANCE_PRINCIPAL",        
+            auth_type="INSTANCE_PRINCIPAL", 
+            provider="cohere"                
         )
 
         qa_tmp = RetrievalQA.from_chain_type(
