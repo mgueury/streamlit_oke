@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-import PyPDF2 as pdf
+import pypdf as pdf
 import json
 from dotenv import load_dotenv
 from langchain_community.chat_models.oci_generative_ai import ChatOCIGenAI
