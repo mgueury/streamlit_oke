@@ -16,6 +16,7 @@ llm = ChatOCIGenAI(
     model_id=config.GENERATE_MODEL,
     service_endpoint=config.ENDPOINT,
     compartment_id=config.COMPARTMENT_ID,
+    auth_type="INSTANCE_PRINCIPAL",         
     model_kwargs={"temperature": 0, "max_tokens": 400}
 )
 
