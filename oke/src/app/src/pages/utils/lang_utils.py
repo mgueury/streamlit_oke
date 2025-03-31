@@ -10,7 +10,6 @@ from langchain_community.vectorstores.oraclevs import OracleVS
 from langchain_community.vectorstores.utils import DistanceStrategy
 from langchain_qdrant import Qdrant
 
-
 def get_text_from_pdf(pdf_path):
     parser = PDFParser(config.COMPARTMENT_ID)
     docs = parser.parse_pdf(pdf_path)

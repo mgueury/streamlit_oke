@@ -7,7 +7,7 @@ from pdf2image import convert_from_path
 import pytesseract
 import os
 from langchain.docstore.document import Document
-from langchain.vectorstores import Qdrant
+from langchain_qdrant import Qdrant
 from langchain_community.embeddings import OCIGenAIEmbeddings
 import oci
 

@@ -10,7 +10,6 @@ from langchain_community.vectorstores.oraclevs import OracleVS
 from langchain_community.vectorstores.utils import DistanceStrategy
 from langchain_qdrant import Qdrant
 
-
 def get_text_from_pdf(pdf_path):
     parser = PDFParser(config.COMPARTMENT_ID)
     docs = parser.parse_pdf(pdf_path)
@@ -44,8 +43,7 @@ def create_qa_retrievals(pdf_file_list: list):
         embeddings = OCIGenAIEmbeddings(
             model_id=config.EMBEDDING_MODEL,
             service_endpoint=config.ENDPOINT,
-            compartment_id=config.COMPARTMENT_ID,
-            auth_type="INSTANCE_PRINCIPAL"
+            compartment_id=config.COMPARTMENT_ID
         )
         print("Ansh 2")
 
@@ -84,8 +82,7 @@ def create_qa_retrievals(pdf_file_list: list):
             model_id=config.GENERATE_MODEL,
             service_endpoint=config.ENDPOINT,
             compartment_id=config.COMPARTMENT_ID,
-            model_kwargs={"temperature": 0, "max_tokens": 400},
-            auth_type="INSTANCE_PRINCIPAL", 
+            model_kwargs={"temperature": 0, "max_tokens": 4000},
             provider="cohere"                
         )
 

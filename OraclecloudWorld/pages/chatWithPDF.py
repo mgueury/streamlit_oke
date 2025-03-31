@@ -1,5 +1,5 @@
 import streamlit as st
-from pypdf import PdfReader
+from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.embeddings import OCIGenAIEmbeddings
 from langchain_qdrant import Qdrant
@@ -45,8 +45,7 @@ def get_vector_store(text_chunks):
     embeddings = OCIGenAIEmbeddings(
         model_id=embeddingModel,
         service_endpoint=endpoint,
-        compartment_id=compartment_id,
-        auth_type="INSTANCE_PRINCIPAL"        
+        compartment_id=compartment_id
     )
 
     documents = [Document(page_content=chunk) for chunk in text_chunks]
@@ -83,8 +82,7 @@ def get_conversation_chain(vector_store):
         model_id=generateModel,
         service_endpoint=endpoint,
         compartment_id=compartment_id,
-        model_kwargs={"temperature": 0, "max_tokens": 4000},
-        auth_type="INSTANCE_PRINCIPAL",
+        model_kwargs={"temperature": 0, "max_tokens": 400},
         provider="cohere"                
     )
 
@@ -100,15 +98,14 @@ def get_conversation_chain(vector_store):
 
 # Function to handle user input and display the chat history
 def handle_user_input(question):
-    if st.session_state.conversation: 
-        response = st.session_state.conversation({'question': question})
-        st.session_state.chat_history = response['chat_history']
+    response = st.session_state.conversation({'question': question})
+    st.session_state.chat_history = response['chat_history']
 
-        for i, message in enumerate(st.session_state.chat_history):
-            if i % 2 == 0:
-                st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
-            else:
-                st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
+    for i, message in enumerate(st.session_state.chat_history):
+        if i % 2 == 0:
+            st.write(user_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
+        else:
+            st.write(bot_template.replace("{{MSG}}", message.content), unsafe_allow_html=True)
 
 # Main function to set up the Streamlit app
 def main():
