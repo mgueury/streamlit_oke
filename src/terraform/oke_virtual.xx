@@ -1,5 +1,11 @@
 #----------------------------------------------------------------------------
 # VARIABLES
+#
+# XXXXXX
+# To run this code with Virtual Node, the authentication needs to use workload-identity
+# https://blogs.oracle.com/cloud-infrastructure/post/oke-workload-identity-greater-control-access
+# XXXXXX
+#
 
 variable "oke_shape" {
   default = "Pod.Standard.E4.Flex"
