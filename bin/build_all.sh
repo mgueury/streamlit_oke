@@ -16,7 +16,7 @@ elif [ -f $STATE_FILE ]; then
    echo "$STATE_FILE detected."
 else
    export TERRAFORM_FLAG="--auto-approve"
-end if
+fi
 
 # Custom code before build
 if [ -f $PROJECT_DIR/src/before_build.sh ]; then
